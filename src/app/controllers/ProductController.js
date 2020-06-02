@@ -28,5 +28,14 @@ class ProductController {
 
     return res.json(product);
   }
+
+  async indexId(req, res) {
+    const id = req.params;
+    const product = await Product.findOne({
+      where: id,
+      attributes: ['id', 'title', 'price', 'image', 'id_amount'],
+    });
+    return res.json(product);
+  }
 }
 export default new ProductController();
